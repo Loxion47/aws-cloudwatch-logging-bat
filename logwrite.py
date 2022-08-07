@@ -1,3 +1,10 @@
+"""CloudWatchログ書き込み用コード
+
+| CloudWatch Logsへログを書き込む。
+| 書き込む内容は任意のファイルに記載された内容を行単位で書き込む。
+
+"""
+
 import boto3
 import sys
 from enum import Enum
@@ -7,6 +14,9 @@ import time
 
 class Setting(Enum):
     """setting.ini 項目定義クラス
+
+    setting.iniの項目を定義したクラス
+
     """
     LOG_GROUP_NAME = 'log_group_name'
     LOG_STREAM_NAME = 'log_stream_name'
@@ -48,5 +58,5 @@ for row in data_arr:
 
 # sequenceTokenの書き込み
 f3 = open('sequenceToken.txt', 'w', encoding='UTF-8')
-f3.write((sequence_token))
+f3.write(sequence_token)
 f3.close()
